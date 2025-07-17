@@ -1,0 +1,70 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Turkish (`tr`).
+class AppLocalizationsTr extends AppLocalizations {
+  AppLocalizationsTr([String locale = 'tr']) : super(locale);
+
+  @override
+  String get login_title => 'Merhabalar';
+
+  @override
+  String get login_subtitle => 'Tempus varius a vitae interdum id\ntortor elementum tristique eleifend at.';
+
+  @override
+  String get login_email_hint => 'E-Posta';
+
+  @override
+  String get login_password_hint => 'Şifre';
+
+  @override
+  String get login_forgot_password => 'Şifremi unuttum';
+
+  @override
+  String get login_button => 'Giriş Yap';
+
+  @override
+  String get login_no_account => 'Bir hesabın yok mu?';
+
+  @override
+  String get login_register => 'Kayıt Ol!';
+
+  @override
+  String get register_title => 'Hoşgeldiniz';
+
+  @override
+  String get register_subtitle => 'Tempus varius a vitae interdum id tortor elementum tristique eleifend at.';
+
+  @override
+  String get register_name_hint => 'Ad Soyad';
+
+  @override
+  String get register_email_hint => 'E-Posta';
+
+  @override
+  String get register_password_hint => 'Şifre';
+
+  @override
+  String get register_confirm_password_hint => 'Şifre Tekrar';
+
+  @override
+  String get register_button => 'Şimdi Kaydol';
+
+  @override
+  String get register_agreement_prefix => 'Kullanıcı sözleşmesini ';
+
+  @override
+  String get register_agreement_link => 'okudum ve kabul ediyorum.';
+
+  @override
+  String get register_agreement_suffix => ' Bu sözleşmeyi okuyarak devam ediniz lütfen.';
+
+  @override
+  String get register_already_have_account => 'Zaten bir hesabın var mı?';
+
+  @override
+  String get register_login => 'Giriş Yap!';
+}

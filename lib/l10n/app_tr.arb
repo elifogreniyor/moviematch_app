@@ -1,0 +1,22 @@
+{
+  "login_title": "Merhabalar",
+  "login_subtitle": "Tempus varius a vitae interdum id\ntortor elementum tristique eleifend at.",
+  "login_email_hint": "E-Posta",
+  "login_password_hint": "Şifre",
+  "login_forgot_password": "Şifremi unuttum",
+  "login_button": "Giriş Yap",
+  "login_no_account": "Bir hesabın yok mu?",
+  "login_register": "Kayıt Ol!",
+  "register_title": "Hoşgeldiniz",
+  "register_subtitle": "Tempus varius a vitae interdum id tortor elementum tristique eleifend at.",
+  "register_name_hint": "Ad Soyad",
+  "register_email_hint": "E-Posta",
+  "register_password_hint": "Şifre",
+  "register_confirm_password_hint": "Şifre Tekrar",
+  "register_button": "Şimdi Kaydol",
+  "register_agreement_prefix": "Kullanıcı sözleşmesini ",
+  "register_agreement_link": "okudum ve kabul ediyorum.",
+  "register_agreement_suffix": " Bu sözleşmeyi okuyarak devam ediniz lütfen.",
+  "register_already_have_account": "Zaten bir hesabın var mı?",
+  "register_login": "Giriş Yap!"
+}
