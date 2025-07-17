@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../viewmodel/login_cubit.dart';
-import '../viewmodel/login_state.dart';
-import 'package:popcorndate/l10n/app_localizations.dart'; // yolunu kendi projenle güncelle
+import 'package:popcorndate/core/constants/app_constants.dart';
+import 'package:popcorndate/l10n/app_localizations.dart';
+import 'package:popcorndate/presentation/widgets/custom_textfield_widget.dart';
+import 'package:popcorndate/presentation/widgets/social_icon_button_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,193 +10,170 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
-    return BlocProvider(
-      create: (_) => LoginCubit(),
-      child: BlocBuilder<LoginCubit, LoginState>(
-        builder: (context, state) {
-          final cubit = context.read<LoginCubit>();
-          return Scaffold(
-            backgroundColor: const Color(0xFF090909),
-            body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 28),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 80),
-                    Text(
-                      l10n.login_title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      l10n.login_subtitle,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                    const SizedBox(height: 32),
-                    TextField(
-                      controller: cubit.emailController,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xFF232323),
-                        hintText: l10n.login_email_hint,
-                        hintStyle: const TextStyle(color: Color(0xFF757575)),
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: Colors.white70,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 18,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    TextField(
-                      controller: cubit.passwordController,
-                      obscureText: true,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xFF232323),
-                        hintText: l10n.login_password_hint,
-                        hintStyle: const TextStyle(color: Color(0xFF757575)),
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: Colors.white70,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: const Icon(
-                            Icons.visibility_off_outlined,
-                            color: Colors.white54,
-                          ),
-                          onPressed: () {},
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 18,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: const Color(0xFFAAAAAA),
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size(0, 0),
-                        ),
-                        child: Text(
-                          l10n.login_forgot_password,
-                          style: const TextStyle(fontSize: 13),
-                        ),
-                      ),
-                    ),
-                    if (state.error != null)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Text(
-                          state.error!,
-                          style: const TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    const SizedBox(height: 4),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 52,
-                      child: ElevatedButton(
-                        onPressed: state.isLoading ? null : cubit.login,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFE50914),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: state.isLoading
-                            ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                            : Text(
-                                l10n.login_button,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                      ),
-                    ),
-                    const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _SocialIconButton(icon: Icons.g_mobiledata),
-                        const SizedBox(width: 16),
-                        _SocialIconButton(icon: Icons.apple),
-                        const SizedBox(width: 16),
-                        _SocialIconButton(icon: Icons.facebook),
-                      ],
-                    ),
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          l10n.login_no_account,
-                          style: const TextStyle(color: Color(0xFFAAAAAA)),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.white,
-                          ),
-                          child: Text(
-                            l10n.login_register,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                  ],
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: Column(
+            children: [
+              const SizedBox(height: 200),
+              Text(
+                l10n.login_title,
+                style: const TextStyle(
+                  fontFamily: AppConstants.fontFamily,
+                  fontSize: AppConstants.titleFontSize,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.white,
                 ),
               ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+              const SizedBox(height: 8),
+              Text(
+                l10n.login_subtitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: AppConstants.fontFamily,
+                  fontSize: AppConstants.subtitleFontSize,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.white,
+                  height: 1.5,
+                ),
+              ),
+              const SizedBox(height: 40),
+              CustomTextField(
+                hintText: l10n.login_email_hint,
+                iconPath: "assets/icons/message.svg",
+              ),
+              const SizedBox(height: 13),
+              CustomTextField(
+                hintText: l10n.login_password_hint,
+                iconPath: "assets/icons/unlock.svg",
+                obscureText: true,
+              ),
 
-class _SocialIconButton extends StatelessWidget {
-  final IconData icon;
-  const _SocialIconButton({required this.icon});
+              const SizedBox(height: 4),
 
-  @override
-  Widget build(BuildContext context) {
-    return Ink(
-      decoration: BoxDecoration(
-        color: const Color(0xFF222222),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: IconButton(
-        icon: Icon(icon, color: Colors.white),
-        onPressed: () {},
+              // Şifremi Unuttum
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size(0, 0),
+                    foregroundColor: AppColors.white,
+                  ),
+                  child: Text(
+                    l10n.login_forgot_password,
+                    style: TextStyle(
+                      fontFamily: AppConstants.fontFamily,
+                      fontSize: AppConstants.forgotPasswordFontSize,
+                      color: AppColors.white,
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 0.8,
+                      decorationColor: AppColors.white,
+                      height: 1.0,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Giriş Yap Butonu
+              SizedBox(
+                width: double.infinity,
+                height: AppConstants.buttonHeight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.borderRadius,
+                      ),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    l10n.login_button,
+                    style: TextStyle(
+                      fontFamily: AppConstants.fontFamily,
+                      fontSize: AppConstants.buttonFontSize,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 36.92),
+
+              // Social Icons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SocialIconButton(
+                    assetPath: "assets/icons/google.svg",
+                    buttonSize: AppConstants.socialIconButtonSize,
+                    iconWidth: AppConstants.socialIconGoogle,
+                    iconHeight: AppConstants.socialIconGoogle,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: AppConstants.betweenSocialIcons),
+                  SocialIconButton(
+                    assetPath: "assets/icons/apple.svg",
+                    buttonSize: AppConstants.socialIconButtonSize,
+                    iconWidth: AppConstants.socialIconAppleW,
+                    iconHeight: AppConstants.socialIconAppleH,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: AppConstants.betweenSocialIcons),
+                  SocialIconButton(
+                    assetPath: "assets/icons/facebook.svg",
+                    buttonSize: AppConstants.socialIconButtonSize,
+                    iconWidth: AppConstants.socialIconFacebookW,
+                    iconHeight: AppConstants.socialIconFacebookH,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32.27),
+              // Alt yazı
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    l10n.login_no_account,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.white50,
+                      fontFamily: AppConstants.fontFamily,
+                      fontSize: AppConstants.bottomTextFontSize,
+                      height: 1.5,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                    ),
+                    child: Text(
+                      l10n.login_register,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: AppConstants.fontFamily,
+                        fontSize: AppConstants.bottomTextFontSize,
+                        height: 1.5,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
       ),
     );
   }
