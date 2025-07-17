@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
 import 'package:sinflix/presentation/widgets/custom_textfield_widget.dart';
@@ -161,7 +162,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Giriş Yap sayfasına yönlendir
+                      context.go('/login');
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: AppColors.white,
