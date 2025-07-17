@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sinflix/features/auth/data/auth_api_service.dart';
+import 'package:sinflix/features/auth/data/auth_repository.dart';
+import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
-import 'package:sinflix/presentation/splash/viewmodel/splash_cubit.dart';
+import 'package:sinflix/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:sinflix/routes/app_routes.dart';
 
 void main() {
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SplashCubit(const FlutterSecureStorage())),
-        // Diğer cubit'leri buraya eklersin
+        BlocProvider<AuthCubit>(create: (_) => AuthCubit()),
       ],
       child: MaterialApp.router(
         title: 'SinFlix',

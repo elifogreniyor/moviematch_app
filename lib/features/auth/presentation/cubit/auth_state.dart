@@ -1,23 +1,29 @@
-class RegisterState {
+enum AuthAction { login, register }
+
+class AuthState {
   final bool isLoading;
   final String? error;
   final bool isSuccess;
+  final AuthAction? action;
 
-  RegisterState({
+  AuthState({
     this.isLoading = false,
     this.error,
     this.isSuccess = false,
+    this.action,
   });
 
-  RegisterState copyWith({
+  AuthState copyWith({
     bool? isLoading,
     String? error,
     bool? isSuccess,
+    AuthAction? action,
   }) {
-    return RegisterState(
+    return AuthState(
       isLoading: isLoading ?? this.isLoading,
       error: error,
       isSuccess: isSuccess ?? this.isSuccess,
+      action: action,
     );
   }
 }

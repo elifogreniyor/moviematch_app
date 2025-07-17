@@ -34,4 +34,8 @@
   "register_agreement_suffix": " Please read before continuing.",
   "register_already_have_account": "Already have an account?",
   "register_login": "Sign In!"
+
+  //ERROR
+  "login_failed": "Login failed.",
+  "register_failed": "Registration failed."
 }

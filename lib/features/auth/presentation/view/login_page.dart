@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
-import 'package:sinflix/presentation/widgets/custom_textfield_widget.dart';
-import 'package:sinflix/presentation/widgets/primary_button_widget.dart';
-import 'package:sinflix/presentation/widgets/social_icon_button_widget.dart';
+import 'package:sinflix/core/widgets/custom_textfield_widget.dart';
+import 'package:sinflix/core/widgets/primary_button_widget.dart';
+import 'package:sinflix/core/widgets/social_icon_button_widget.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +47,13 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               CustomTextField(
+                controller: emailController,
                 hintText: l10n.login_email_hint,
                 iconPath: "assets/icons/message.svg",
               ),
               const SizedBox(height: 13),
               CustomTextField(
+                controller: passwordController,
                 hintText: l10n.login_password_hint,
                 iconPath: "assets/icons/unlock.svg",
                 obscureText: true,
@@ -88,7 +94,10 @@ class LoginPage extends StatelessWidget {
                 child: PrimaryButton(
                   text: l10n.login_button,
                   onTap: () {
-                    /* login işlemleri */
+                    context.read<AuthCubit>().login(
+                      emailController.text.trim(),
+                      passwordController.text,
+                    );
                   },
                 ),
               ),

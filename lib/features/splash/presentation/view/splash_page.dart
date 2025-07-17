@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sinflix/presentation/splash/viewmodel/splash_cubit.dart';
-import 'package:sinflix/presentation/splash/viewmodel/splash_state.dart';
+import 'package:sinflix/features/splash/presentation/cubit/splash_cubit.dart';
+import 'package:sinflix/features/splash/presentation/cubit/splash_state.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

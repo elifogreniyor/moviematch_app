@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sinflix/presentation/home/view/home_page.dart';
-import 'package:sinflix/presentation/login/view/login_page.dart';
-import 'package:sinflix/presentation/register/view/register_page.dart';
-import 'package:sinflix/presentation/splash/view/splash_page.dart';
+import 'package:sinflix/features/home/presentation/view/home_page.dart';
+import 'package:sinflix/features/auth/presentation/view/login_page.dart';
+import 'package:sinflix/features/auth/presentation/view/register_page.dart';
+import 'package:sinflix/features/splash/presentation/view/splash_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -14,7 +14,7 @@ class AppRouter {
         path: '/login',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
-            child: const LoginPage(),
+            child: LoginPage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);
@@ -26,7 +26,7 @@ class AppRouter {
         path: '/register',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
-            child: const RegisterPage(),
+            child:RegisterPage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);

@@ -34,4 +34,8 @@
   "register_agreement_suffix": " Bu sözleşmeyi okuyarak devam ediniz lütfen.",
   "register_already_have_account": "Zaten bir hesabın var mı?",
   "register_login": "Giriş Yap!"
+
+  //ERROR
+  "login_failed": "Giriş başarısız.",
+  "register_failed": "Kayıt başarısız."
 }

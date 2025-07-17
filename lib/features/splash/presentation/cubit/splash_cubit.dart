@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:sinflix/presentation/splash/viewmodel/splash_state.dart';
+import 'package:sinflix/features/splash/presentation/cubit/splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
   final FlutterSecureStorage storage;

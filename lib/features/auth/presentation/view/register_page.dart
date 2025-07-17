@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
-import 'package:sinflix/presentation/widgets/custom_textfield_widget.dart';
-import 'package:sinflix/presentation/widgets/primary_button_widget.dart';
-import 'package:sinflix/presentation/widgets/social_icon_button_widget.dart';
+import 'package:sinflix/core/widgets/custom_textfield_widget.dart';
+import 'package:sinflix/core/widgets/primary_button_widget.dart';
+import 'package:sinflix/core/widgets/social_icon_button_widget.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,18 +63,21 @@ class RegisterPage extends StatelessWidget {
 
               // Ad Soyad
               CustomTextField(
+                controller: nameController,
                 hintText: l10n.register_name_hint,
                 iconPath: "assets/icons/person.svg",
               ),
               const SizedBox(height: 13),
               // E-posta
               CustomTextField(
+                controller: emailController,
                 hintText: l10n.register_email_hint,
                 iconPath: "assets/icons/message.svg",
               ),
               const SizedBox(height: 16),
               // Şifre
               CustomTextField(
+                controller: passwordController,
                 hintText: l10n.register_password_hint,
                 iconPath: "assets/icons/unlock.svg",
                 obscureText: true,
@@ -75,6 +85,7 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 13),
               // Şifre Tekrar
               CustomTextField(
+                controller: confirmPasswordController,
                 hintText: l10n.register_confirm_password_hint,
                 iconPath: "assets/icons/unlock.svg",
                 obscureText: false,
@@ -114,7 +125,12 @@ class RegisterPage extends StatelessWidget {
               PrimaryButton(
                 text: l10n.register_button,
                 onTap: () {
-                  // Kayıt işlemi
+                  context.read<AuthCubit>().register(
+                    nameController.text.trim(),
+                    emailController.text.trim(),
+                    passwordController.text,
+                    confirmPasswordController.text,
+                  );
                 },
               ),
               const SizedBox(height: 36),

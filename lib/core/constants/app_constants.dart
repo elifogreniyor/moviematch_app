@@ -15,6 +15,8 @@ class AppColors {
 }
 
 class AppConstants {
+  static const String baseUrl = "https://caseapi.servicelabs.tech";
+
   static const String fontFamily = "EuclidCircularA";
 
   static const double borderRadius = 18;
