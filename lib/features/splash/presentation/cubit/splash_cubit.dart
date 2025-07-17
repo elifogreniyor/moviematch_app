@@ -11,7 +11,7 @@ class SplashCubit extends Cubit<SplashState> {
     emit(SplashLoading());
     await Future.delayed(const Duration(milliseconds: 1000));
 
-    final token = await storage.read(key: 'access_token');
+    final token = await storage.read(key: 'token');
 
     if (token != null && token.isNotEmpty) {
       emit(SplashAuthenticated());

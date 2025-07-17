@@ -214,6 +214,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign In!'**
   String get register_login;
+
+  /// No description provided for @login_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Login successful.'**
+  String get login_success;
+
+  /// No description provided for @login_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed.'**
+  String get login_failed;
+
+  /// No description provided for @register_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration failed.'**
+  String get register_failed;
+
+  /// No description provided for @register_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful.'**
+  String get register_success;
+
+  /// No description provided for @register_passwords_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get register_passwords_not_match;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

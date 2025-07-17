@@ -7,9 +7,10 @@ class AuthResponse {
   AuthResponse({required this.token, required this.user});
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) {
+    final data = json['data'] ?? {};
     return AuthResponse(
-      token: json['token'] ?? '',
-      user: UserModel.fromJson(json['user'] ?? {}),
+      token: data['token'] ?? '',
+      user: UserModel.fromJson(data),
     );
   }
 }

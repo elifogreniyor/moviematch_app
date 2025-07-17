@@ -1,5 +1,4 @@
 {
-  //LOGIN
   "login_title": "Welcome",
   "login_subtitle": "Tempus varius at urna interdum id tortor elementum tristique eleifend at.",
   "login_email_hint": "E-mail",
@@ -19,9 +18,7 @@
   "register_agreement_link": "I have read and accept.",
   "register_agreement_suffix": " Please read before continuing.",
   "register_already_have_account": "Already have an account?",
-  "register_login": "Sign In!"
-
-  // REGISTER
+  "register_login": "Sign In!",
   "register_title": "Welcome",
   "register_subtitle": "Tempus varius at urna interdum id tortor elementum tristique eleifend at.",
   "register_name_hint": "Full Name",
@@ -33,9 +30,10 @@
   "register_agreement_link": "I have read and accept.",
   "register_agreement_suffix": " Please read before continuing.",
   "register_already_have_account": "Already have an account?",
-  "register_login": "Sign In!"
-
-  //ERROR
+  "register_login": "Sign In!",
+  "login_success": "Login successful.",
   "login_failed": "Login failed.",
-  "register_failed": "Registration failed."
+  "register_failed": "Registration failed.",
+  "register_success": "Registration successful.",
+  "register_passwords_not_match": "Passwords do not match."
 }

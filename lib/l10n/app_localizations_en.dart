@@ -67,4 +67,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_login => 'Sign In!';
+
+  @override
+  String get login_success => 'Login successful.';
+
+  @override
+  String get login_failed => 'Login failed.';
+
+  @override
+  String get register_failed => 'Registration failed.';
+
+  @override
+  String get register_success => 'Registration successful.';
+
+  @override
+  String get register_passwords_not_match => 'Passwords do not match.';
 }

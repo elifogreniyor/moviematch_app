@@ -7,6 +7,7 @@ class CustomTextField extends StatefulWidget {
   final String hintText;
   final String iconPath;
   final bool obscureText;
+  final bool showEyeIcon;
 
   const CustomTextField({
     super.key,
@@ -14,6 +15,7 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.iconPath,
     this.obscureText = false,
+    this.showEyeIcon = false,
   });
 
   @override
@@ -61,7 +63,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               color: AppColors.white,
             ),
           ),
-          suffixIcon: isPassword
+          suffixIcon: isPassword && widget.showEyeIcon
               ? GestureDetector(
                   onTap: () => setState(() => _obscured = !_obscured),
                   child: Padding(

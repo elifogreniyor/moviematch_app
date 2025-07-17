@@ -67,4 +67,19 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get register_login => 'Giriş Yap!';
+
+  @override
+  String get login_success => 'Giriş başarılı.';
+
+  @override
+  String get login_failed => 'Giriş başarısız.';
+
+  @override
+  String get register_failed => 'Kayıt başarısız.';
+
+  @override
+  String get register_success => 'Kayıt başarılı.';
+
+  @override
+  String get register_passwords_not_match => 'Şifreler eşleşmiyor.';
 }
