@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:popcorndate/core/constants/app_constants.dart';
+import 'package:sinflix/core/constants/app_constants.dart';
 
 class SocialIconButton extends StatelessWidget {
   final String assetPath;

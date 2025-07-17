@@ -1,10 +1,23 @@
 class RegisterState {
   final bool isLoading;
   final String? error;
+  final bool isSuccess;
 
-  const RegisterState({this.isLoading = false, this.error});
+  RegisterState({
+    this.isLoading = false,
+    this.error,
+    this.isSuccess = false,
+  });
 
-  RegisterState copyWith({bool? isLoading, String? error}) {
-    return RegisterState(isLoading: isLoading ?? this.isLoading, error: error);
+  RegisterState copyWith({
+    bool? isLoading,
+    String? error,
+    bool? isSuccess,
+  }) {
+    return RegisterState(
+      isLoading: isLoading ?? this.isLoading,
+      error: error,
+      isSuccess: isSuccess ?? this.isSuccess,
+    );
   }
 }

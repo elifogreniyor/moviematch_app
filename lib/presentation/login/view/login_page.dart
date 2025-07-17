@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:popcorndate/core/constants/app_constants.dart';
-import 'package:popcorndate/l10n/app_localizations.dart';
-import 'package:popcorndate/presentation/widgets/custom_textfield_widget.dart';
-import 'package:popcorndate/presentation/widgets/social_icon_button_widget.dart';
+import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
+import 'package:sinflix/presentation/widgets/custom_textfield_widget.dart';
+import 'package:sinflix/presentation/widgets/primary_button_widget.dart';
+import 'package:sinflix/presentation/widgets/social_icon_button_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -83,26 +84,11 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: AppConstants.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        AppConstants.borderRadius,
-                      ),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    l10n.login_button,
-                    style: TextStyle(
-                      fontFamily: AppConstants.fontFamily,
-                      fontSize: AppConstants.buttonFontSize,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.white,
-                    ),
-                  ),
+                child: PrimaryButton(
+                  text: l10n.login_button,
+                  onTap: () {
+                    /* login işlemleri */
+                  },
                 ),
               ),
               const SizedBox(height: 36.92),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:popcorndate/l10n/app_localizations.dart';
-import 'package:popcorndate/presentation/login/view/login_page.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
+import 'package:sinflix/presentation/register/view/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const LoginPage(),
+      home: const RegisterPage(),
     );
   }
 }

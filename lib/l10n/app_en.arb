@@ -1,4 +1,5 @@
 {
+  //LOGIN
   "login_title": "Welcome",
   "login_subtitle": "Tempus varius at urna interdum id tortor elementum tristique eleifend at.",
   "login_email_hint": "E-mail",
@@ -7,6 +8,20 @@
   "login_button": "Sign In",
   "login_no_account": "Don't have an account?",
   "login_register": "Register!",
+  "register_title": "Welcome",
+  "register_subtitle": "Tempus varius at urna interdum id tortor elementum tristique eleifend at.",
+  "register_name_hint": "Full Name",
+  "register_email_hint": "E-mail",
+  "register_password_hint": "Password",
+  "register_confirm_password_hint": "Confirm Password",
+  "register_button": "Sign Up",
+  "register_agreement_prefix": "User agreement ",
+  "register_agreement_link": "I have read and accept.",
+  "register_agreement_suffix": " Please read before continuing.",
+  "register_already_have_account": "Already have an account?",
+  "register_login": "Sign In!"
+
+  // REGISTER
   "register_title": "Welcome",
   "register_subtitle": "Tempus varius at urna interdum id tortor elementum tristique eleifend at.",
   "register_name_hint": "Full Name",

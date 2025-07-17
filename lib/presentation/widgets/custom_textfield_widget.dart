@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:popcorndate/core/constants/app_constants.dart';
+import 'package:sinflix/core/constants/app_constants.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
@@ -68,8 +68,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     padding: const EdgeInsets.only(right: 18, left: 12),
                     child: SvgPicture.asset(
                       _obscured
-                          ? "assets/icons/eye_off.svg"
-                          : "assets/icons/eye.svg",
+                          ? "assets/icons/eye.svg"
+                          : "assets/icons/eye_off.svg",
                       width: AppConstants.iconSize,
                       height: AppConstants.iconSize,
                       color: AppColors.white,
