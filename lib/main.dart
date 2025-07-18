@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,6 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sinflix/features/auth/data/auth_api_service.dart';
 import 'package:sinflix/features/auth/data/auth_repository.dart';
 import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:sinflix/features/profile_photo/data/photo_upload_service.dart';
+import 'package:sinflix/features/profile_photo/presentation/cubit/photo_upload_cubit.dart';
 import 'package:sinflix/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
 import 'package:sinflix/routes/app_routes.dart';
@@ -19,6 +22,9 @@ void main() {
             AuthRepository(AuthApiService()),
             const FlutterSecureStorage(),
           ),
+        ),
+        BlocProvider(
+          create: (_) => PhotoUploadCubit(PhotoUploadService(Dio())),
         ),
       ],
       child: const MyApp(),

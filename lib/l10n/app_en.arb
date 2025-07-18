@@ -35,5 +35,13 @@
   "login_failed": "Login failed.",
   "register_failed": "Registration failed.",
   "register_success": "Registration successful.",
-  "register_passwords_not_match": "Passwords do not match."
+  "register_passwords_not_match": "Passwords do not match.",
+  "photo_upload_success": "Photo uploaded successfully!",
+  "photo_upload_failed": "Photo upload failed.",
+  "photo_upload_appBar_title": "Profile Detail",
+  "photo_upload_title": "Upload Your Photos",
+  "photo_upload_subtitle": "Resources out incentivize relaxation floor loss cc.",
+  "photo_upload_button": "Continue"
+
+
 }

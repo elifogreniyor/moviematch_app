@@ -244,6 +244,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match.'**
   String get register_passwords_not_match;
+
+  /// No description provided for @photo_upload_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo uploaded successfully!'**
+  String get photo_upload_success;
+
+  /// No description provided for @photo_upload_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo upload failed.'**
+  String get photo_upload_failed;
+
+  /// No description provided for @photo_upload_appBar_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Detail'**
+  String get photo_upload_appBar_title;
+
+  /// No description provided for @photo_upload_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Your Photos'**
+  String get photo_upload_title;
+
+  /// No description provided for @photo_upload_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Resources out incentivize relaxation floor loss cc.'**
+  String get photo_upload_subtitle;
+
+  /// No description provided for @photo_upload_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get photo_upload_button;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

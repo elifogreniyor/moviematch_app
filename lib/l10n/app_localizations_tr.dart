@@ -82,4 +82,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get register_passwords_not_match => 'Şifreler eşleşmiyor.';
+
+  @override
+  String get photo_upload_success => 'Fotoğraf başarıyla yüklendi!';
+
+  @override
+  String get photo_upload_failed => 'Fotoğraf yüklenemedi.';
+
+  @override
+  String get photo_upload_appBar_title => 'Profil Detayı';
+
+  @override
+  String get photo_upload_title => 'Fotoğraflarınızı Yükleyin';
+
+  @override
+  String get photo_upload_subtitle => 'Resources out incentivize relaxation floor loss cc.';
+
+  @override
+  String get photo_upload_button => 'Devam Et';
 }

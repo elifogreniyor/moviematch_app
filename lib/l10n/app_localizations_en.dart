@@ -82,4 +82,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_passwords_not_match => 'Passwords do not match.';
+
+  @override
+  String get photo_upload_success => 'Photo uploaded successfully!';
+
+  @override
+  String get photo_upload_failed => 'Photo upload failed.';
+
+  @override
+  String get photo_upload_appBar_title => 'Profile Detail';
+
+  @override
+  String get photo_upload_title => 'Upload Your Photos';
+
+  @override
+  String get photo_upload_subtitle => 'Resources out incentivize relaxation floor loss cc.';
+
+  @override
+  String get photo_upload_button => 'Continue';
 }

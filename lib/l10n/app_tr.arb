@@ -35,5 +35,11 @@
   "login_failed": "Giriş başarısız.",
   "register_failed": "Kayıt başarısız.",
   "register_success": "Kayıt başarılı.",
-  "register_passwords_not_match": "Şifreler eşleşmiyor."
+  "register_passwords_not_match": "Şifreler eşleşmiyor.",
+  "photo_upload_success": "Fotoğraf başarıyla yüklendi!",
+  "photo_upload_failed": "Fotoğraf yüklenemedi.",
+  "photo_upload_appBar_title": "Profil Detayı",
+  "photo_upload_title": "Fotoğraflarınızı Yükleyin",
+  "photo_upload_subtitle": "Resources out incentivize relaxation floor loss cc.",
+  "photo_upload_button": "Devam Et"
 }

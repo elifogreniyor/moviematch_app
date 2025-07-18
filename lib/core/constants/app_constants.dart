@@ -47,4 +47,17 @@ class AppConstants {
   static const double buttonFontSize = 15;
   static const double bottomTextFontSize = 12;
   static const double forgotPasswordFontSize = 13;
+
+  static const double appBarBackButtonSize = 44;
+  static const double appBarBackIconSize = 24;
+  static const double appBarTitleFontSize = 15;
+  static const double photoBoxSize = 168;
+  static const double photoBoxBorderRadius = 28;
+  static const double photoBoxIconSize = 48;
+  static const double photoBoxBorderWidth = 1.5;
+  static const double pageTopSpacing = 44;
+  static const double titleSpacing = 8;
+  static const double subtitleSpacing = 32;
+  static const double sectionSpacing = 16;
+  static const double pageBottomPadding = 28;
 }

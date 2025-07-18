@@ -31,7 +31,7 @@ class RegisterPage extends StatelessWidget {
             debugPrint('kayıt başarılı.');
             Future.delayed(const Duration(seconds: 1), () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              context.go('/home');
+              context.go('/upload');
             });
           }
           if (state.error != null) {
