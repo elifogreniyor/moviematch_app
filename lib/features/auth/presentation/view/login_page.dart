@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
             debugPrint('Giriş başarılı.');
             Future.delayed(const Duration(seconds: 1), () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              context.go('/home');
+              context.go('/discover');
             });
           }
           if (state.error != null) {
@@ -113,7 +113,6 @@ class LoginPage extends StatelessWidget {
                   child: PrimaryButton(
                     text: l10n.login_button,
                     onTap: () {
-                      debugPrint('login butonuna basıldı');
                       context.read<AuthCubit>().login(
                         emailController.text.trim(),
                         passwordController.text,

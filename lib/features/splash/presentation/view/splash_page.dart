@@ -23,7 +23,8 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashAuthenticated) {
-          context.go('/upload');
+          //TODO: burayı sonra discover yap
+          context.go('/discover');
         } else if (state is SplashUnauthenticated) {
           context.go('/login');
         }

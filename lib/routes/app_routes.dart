@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sinflix/features/home/presentation/view/home_page.dart';
+import 'package:sinflix/features/discover/presentation/view/discover_page.dart';
 import 'package:sinflix/features/auth/presentation/view/login_page.dart';
 import 'package:sinflix/features/auth/presentation/view/register_page.dart';
 import 'package:sinflix/features/profile_photo/presentation/view/profile_photo_page.dart';
@@ -37,10 +37,10 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: '/home',
+        path: '/discover',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
-            child: const HomePage(),
+            child: const DiscoverPage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);
