@@ -10,9 +10,12 @@ class AppColors {
   static const Color white20 = Color(0x33FFFFFF);
   static const Color white50 = Color(0x80FFFFFF);
 
+  static const Color blackLinearGradient = Color(0xE6000000);
+
   static const textFieldBorder = white20;
   static const textFieldBorderFocused = white50;
 }
+
 
 class AppConstants {
   static const String baseUrl = "https://caseapi.servicelabs.tech";
@@ -60,4 +63,6 @@ class AppConstants {
   static const double subtitleSpacing = 32;
   static const double sectionSpacing = 16;
   static const double pageBottomPadding = 28;
+
+  static const double movieCardRadius = 28;
 }

@@ -7,26 +7,29 @@ import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/features/auth/data/auth_api_service.dart';
 import 'package:sinflix/features/auth/data/auth_repository.dart';
 import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:sinflix/features/discover/data/discover_api_service.dart';
+import 'package:sinflix/features/discover/presentation/cubit/discover_cubit.dart';
 import 'package:sinflix/features/profile_photo/data/photo_upload_service.dart';
 import 'package:sinflix/features/profile_photo/presentation/cubit/photo_upload_cubit.dart';
 import 'package:sinflix/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
 import 'package:sinflix/routes/app_routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final dio = Dio(BaseOptions(baseUrl: AppConstants.baseUrl));
+  final secureStorage = FlutterSecureStorage();
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => SplashCubit(FlutterSecureStorage())),
+        BlocProvider(create: (_) => SplashCubit(secureStorage)),
         BlocProvider(
-          create: (_) => AuthCubit(
-            AuthRepository(AuthApiService(dio)),
-            const FlutterSecureStorage(),
-          ),
+          create: (_) =>
+              AuthCubit(AuthRepository(AuthApiService(dio)), secureStorage),
         ),
         BlocProvider(create: (_) => PhotoUploadCubit(PhotoUploadService(dio))),
+        BlocProvider(create: (_) => DiscoverCubit(DiscoverApiService(dio))),
       ],
       child: const MyApp(),
     ),

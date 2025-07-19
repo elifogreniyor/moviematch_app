@@ -12,34 +12,29 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _BottomNavItem(
-                iconPath: 'assets/icons/home.svg',
-                label: 'Anasayfa',
-                selected: currentIndex == 0,
-                onTap: () {
-                  if (currentIndex != 0) context.go('/discover');
-                },
-              ),
-              const SizedBox(width: 16),
-              _BottomNavItem(
-                iconPath: 'assets/icons/profile.svg',
-                label: 'Profil',
-                selected: currentIndex == 1,
-                onTap: () {
-                  if (currentIndex != 1) context.go('/profile');
-                },
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _BottomNavItem(
+            iconPath: 'assets/icons/home.svg',
+            label: 'Anasayfa',
+            selected: currentIndex == 0,
+            onTap: () {
+              if (currentIndex != 0) context.go('/discover');
+            },
           ),
-        ),
+          const SizedBox(width: 16),
+          _BottomNavItem(
+            iconPath: 'assets/icons/profile.svg',
+            label: 'Profil',
+            selected: currentIndex == 1,
+            onTap: () {
+              if (currentIndex != 1) context.go('/profile');
+            },
+          ),
+        ],
       ),
     );
   }
