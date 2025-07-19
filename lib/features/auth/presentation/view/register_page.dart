@@ -145,7 +145,7 @@ class RegisterPage extends StatelessWidget {
                 PrimaryButton(
                   text: l10n.register_button,
                   onTap: () {
-                    print("kayıt ol butonuna basıldı");
+                    debugPrint("kayıt ol butonuna basıldı");
                     if (passwordController.text ==
                         confirmPasswordController.text) {
                       context.read<AuthCubit>().register(

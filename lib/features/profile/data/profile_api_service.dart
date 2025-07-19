@@ -1,10 +1,29 @@
+
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class PhotoUploadService {
+class ProfileApiService {
   final Dio dio;
-  PhotoUploadService(this.dio);
+
+  ProfileApiService(this.dio);
+
+  Future<Map<String, dynamic>> getProfile(String token) async {
+    final response = await dio.get(
+      '/user/profile',
+      options: Options(headers: {"Authorization": "Bearer $token"}),
+    );
+    return response.data as Map<String, dynamic>;
+  }
+
+  Future<Map<String, dynamic>> getFavoriteMovies(String token) async {
+    final response = await dio.get(
+      '/movie/favorites',
+      options: Options(headers: {"Authorization": "Bearer $token"}),
+    );
+    return response.data as Map<String, dynamic>;
+  }
 
   Future<String> uploadProfilePhoto(File file, String token) async {
     try {
@@ -14,13 +33,11 @@ class PhotoUploadService {
           filename: 'profile.jpg',
         ),
       });
-      debugPrint('[DEBUG] FormData hazır, upload başlıyor...');
       final response = await dio.post(
         '/user/upload_photo',
         data: formData,
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
-      debugPrint('[DEBUG] Sunucudan dönen response: ${response.data}');
       final photoUrl = response.data['data']?['photoUrl'];
       if (photoUrl == null) {
         throw Exception("Fotoğraf yükleme başarısız. Sunucudan url dönmedi.");

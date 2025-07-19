@@ -58,8 +58,8 @@ class _BottomNavItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 125, // Sabit genişlik
-        height: 40, // Sabit yükseklik
+        width: 125,
+        height: 40, 
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(20), // Tasarımdaki radius 20
@@ -77,7 +77,7 @@ class _BottomNavItem extends StatelessWidget {
               width: 28,
               height: 28,
               colorFilter: const ColorFilter.mode(
-                Colors.white, // sabit beyaz renk
+                AppColors.white, // sabit beyaz renk
                 BlendMode.srcIn,
               ),
             ),
@@ -85,7 +85,7 @@ class _BottomNavItem extends StatelessWidget {
             Text(
               label,
               style: const TextStyle(
-                color: Colors.white, // sabit beyaz renk
+                color: AppColors.white, 
                 fontWeight: FontWeight.w500,
                 fontSize: 12,
               ),

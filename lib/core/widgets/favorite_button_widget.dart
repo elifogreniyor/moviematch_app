@@ -10,7 +10,8 @@ class FavoriteButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
         width: 49,
         height: 72,
         decoration: BoxDecoration(
@@ -22,15 +23,22 @@ class FavoriteButtonWidget extends StatelessWidget {
               color: Colors.black.withOpacity(0.08),
               blurRadius: 15,
               spreadRadius: 0,
-              offset: const Offset(0, 4),
+              offset: Offset(0, 4),
             ),
           ],
         ),
         child: Center(
-          child: Icon(
-            isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: isFavorite ? Colors.red : Colors.white,
-            size: 24,
+          child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) =>
+                ScaleTransition(scale: animation, child: child),
+            child: Icon(
+              //TODO : heart iconunu değiştir
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              key: ValueKey(isFavorite),
+              color: isFavorite ? Colors.red : Colors.white,
+              size: 24,
+            ),
           ),
         ),
       ),

@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:sinflix/features/discover/presentation/view/discover_page.dart';
 import 'package:sinflix/features/auth/presentation/view/login_page.dart';
 import 'package:sinflix/features/auth/presentation/view/register_page.dart';
-import 'package:sinflix/features/profile_photo/presentation/view/profile_photo_page.dart';
+import 'package:sinflix/features/profile/presentation/view/profile_page.dart';
+import 'package:sinflix/features/profile/presentation/view/profile_photo_page.dart';
 import 'package:sinflix/features/splash/presentation/view/splash_page.dart';
 
 class AppRouter {
@@ -11,7 +12,10 @@ class AppRouter {
     initialLocation: '/splash',
     routes: [
       GoRoute(path: '/splash', builder: (context, state) => const SplashPage()),
-      GoRoute(path: '/upload', builder: (context, state) => const ProfilePhotoPage()),
+      GoRoute(
+        path: '/upload',
+        builder: (context, state) => const ProfilePhotoPage(),
+      ),
       GoRoute(
         path: '/login',
         pageBuilder: (context, state) {
@@ -28,7 +32,7 @@ class AppRouter {
         path: '/register',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
-            child:RegisterPage(),
+            child: RegisterPage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);
@@ -41,6 +45,18 @@ class AppRouter {
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             child: const DiscoverPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/profile',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            child: const ProfilePage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);

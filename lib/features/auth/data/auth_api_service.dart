@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:sinflix/core/constants/app_constants.dart';
 
 class AuthApiService {
   final Dio dio;

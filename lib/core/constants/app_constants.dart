@@ -9,6 +9,7 @@ class AppColors {
   static const Color white10 = Color(0x1AFFFFFF);
   static const Color white20 = Color(0x33FFFFFF);
   static const Color white50 = Color(0x80FFFFFF);
+  static const Color white80 = Color(0xCCFFFFFF);
 
   static const Color blackLinearGradient = Color(0xE6000000);
 

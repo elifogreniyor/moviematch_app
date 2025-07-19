@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinflix/features/discover/domain/movie_model.dart';
 import '../../data/discover_api_service.dart';
@@ -9,8 +10,9 @@ class DiscoverCubit extends Cubit<DiscoverState> {
   List<MovieModel> _movies = [];
   int _page = 1;
   bool _hasMore = true;
+  bool get hasMore => _hasMore;
   bool _isLoading = false;
-
+  bool get isLoading => _isLoading;
   DiscoverCubit(this.apiService) : super(DiscoverInitial());
 
   Future<void> fetchMovies({bool refresh = false}) async {
@@ -27,13 +29,8 @@ class DiscoverCubit extends Cubit<DiscoverState> {
     }
 
     try {
-      // 1. Yeni film sayfasını çek
-      final newMovies = await apiService.fetchMovies(_page);
-
-      // 2. Favori ID listesini çek
+      final newMovies = await apiService.fetchMovies(_page);// Burada kaç film geldiğini görürsün
       final favoriteIds = await apiService.fetchFavoriteIds();
-
-      // 3. Her filme favori durumunu set et
       for (var m in newMovies) {
         m.isFavorite = favoriteIds.contains(m.id);
       }
@@ -46,6 +43,7 @@ class DiscoverCubit extends Cubit<DiscoverState> {
       _page++;
       emit(DiscoverLoaded(List.unmodifiable(_movies), hasMore: _hasMore));
     } catch (e) {
+      print('Fetch error: $e'); // Hata varsa konsola yazar
       emit(DiscoverError(e.toString()));
     } finally {
       _isLoading = false;
@@ -55,16 +53,12 @@ class DiscoverCubit extends Cubit<DiscoverState> {
   Future<void> toggleFavorite(String movieId) async {
     try {
       await apiService.toggleFavorite(movieId);
-
-      // Güncel favori ID listesini tekrar çek ve hepsine uygula (optimistic update ile anlık UI)
-      final favoriteIds = await apiService.fetchFavoriteIds();
-
       _movies = _movies
-          .map((m) => m.copyWith(isFavorite: favoriteIds.contains(m.id)))
+          .map(
+            (m) => m.id == movieId ? m.copyWith(isFavorite: !m.isFavorite) : m,
+          )
           .toList();
       emit(DiscoverLoaded(List.unmodifiable(_movies), hasMore: _hasMore));
-    } catch (e) {
-      // Hata yönetimi (opsiyonel toast/snackbar)
-    }
+    } catch (e) {}
   }
 }

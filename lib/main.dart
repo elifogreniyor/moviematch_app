@@ -9,8 +9,9 @@ import 'package:sinflix/features/auth/data/auth_repository.dart';
 import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:sinflix/features/discover/data/discover_api_service.dart';
 import 'package:sinflix/features/discover/presentation/cubit/discover_cubit.dart';
-import 'package:sinflix/features/profile_photo/data/photo_upload_service.dart';
-import 'package:sinflix/features/profile_photo/presentation/cubit/photo_upload_cubit.dart';
+import 'package:sinflix/features/profile/data/profile_api_service.dart';
+import 'package:sinflix/features/profile/data/profile_repository.dart';
+import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:sinflix/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
 import 'package:sinflix/routes/app_routes.dart';
@@ -28,8 +29,13 @@ void main() async {
           create: (_) =>
               AuthCubit(AuthRepository(AuthApiService(dio)), secureStorage),
         ),
-        BlocProvider(create: (_) => PhotoUploadCubit(PhotoUploadService(dio))),
         BlocProvider(create: (_) => DiscoverCubit(DiscoverApiService(dio))),
+        BlocProvider(
+          create: (_) => ProfileCubit(
+            ProfileRepository(ProfileApiService(dio)),
+            secureStorage,
+          ),
+        ),
       ],
       child: const MyApp(),
     ),

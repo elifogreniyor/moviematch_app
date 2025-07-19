@@ -8,8 +8,8 @@ import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/core/utils/secure_storage_helper.dart';
 import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
-import 'package:sinflix/features/profile_photo/presentation/cubit/photo_upload_cubit.dart';
-import 'package:sinflix/features/profile_photo/presentation/cubit/photo_upload_state.dart';
+import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:sinflix/features/profile/presentation/cubit/profile_state.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
 
 class ProfilePhotoPage extends StatefulWidget {
@@ -53,23 +53,23 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return BlocConsumer<PhotoUploadCubit, PhotoUploadState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) async {
-        if (state is PhotoUploadSuccess) {
+        if (state is ProfilePhotoUploadSuccess) {
           // Başarı mesajı göster
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(l10n.photo_upload_success)));
           await Future.delayed(const Duration(seconds: 1));
           context.go('/discover'); // veya context.go('/discover')
-        } else if (state is PhotoUploadFailure) {
+        } else if (state is ProfilePhotoUploadFailure) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(l10n.photo_upload_failed)));
         }
       },
       builder: (context, state) {
-        final isLoading = state is PhotoUploadLoading;
+        final isLoading = state is ProfilePhotoUploading;
         return Scaffold(
           backgroundColor: AppColors.backgroundColor,
           body: SafeArea(
@@ -201,7 +201,9 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
               text: l10n.photo_upload_button,
               onTap: () {
                 if (_selectedImage == null) return;
-                context.read<PhotoUploadCubit>().uploadPhoto(_selectedImage!);
+                context.read<ProfileCubit>().uploadProfilePhoto(
+                  _selectedImage!,
+                );
               },
             ),
           ),
