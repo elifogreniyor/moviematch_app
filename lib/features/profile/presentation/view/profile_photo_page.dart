@@ -5,7 +5,9 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/core/widgets/analytics_test_widget.dart';
 import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
+import 'package:sinflix/core/widgets/crashlytics_test_widget.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_state.dart';
@@ -170,6 +172,9 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
                                     ),
                             ),
                           ),
+                          CrashTestButton(),
+                          const SizedBox(height: 16),
+                          AnalyticsTestButton(),
                           const Spacer(),
                         ],
                       ),

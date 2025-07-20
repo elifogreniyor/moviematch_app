@@ -14,18 +14,24 @@ class LoggerService {
   void warning(String message) => _logger.w(message);
 
   void error(String message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.e(message); // SADECE iki parametre!
     if (error != null && stackTrace != null) {
+      _logger.e('$message – $error\n$stackTrace');
       FirebaseCrashlytics.instance.recordError(
         error,
         stackTrace,
         reason: message,
       );
+    } else {
+      _logger.e(message);
+      FirebaseCrashlytics.instance.log(message);
     }
   }
 
-  void logEvent(String name, {Map<String, Object>? params}) {
+  void logEvent(String name, {Map<String, Object?>? params}) {
     _logger.i('Analytics event: $name – $params');
-    FirebaseAnalytics.instance.logEvent(name: name, parameters: params);
+    FirebaseAnalytics.instance.logEvent(
+      name: name,
+      parameters: params?.map((k, v) => MapEntry(k, v as Object)),
+    );
   }
 }

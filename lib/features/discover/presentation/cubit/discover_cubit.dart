@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sinflix/features/discover/domain/movie_model.dart';
 import '../../data/discover_api_service.dart';

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
-import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
 import 'package:sinflix/core/widgets/custom_bottom_navigation_bar.dart';
 import 'package:sinflix/core/widgets/favorite_button_widget.dart';
-import 'package:sinflix/core/widgets/limited_offer_button_widget.dart';
+import 'package:sinflix/core/widgets/floating_language_button_widget.dart';
 import 'package:sinflix/features/discover/presentation/cubit/discover_cubit.dart';
 import 'package:sinflix/features/discover/presentation/cubit/discover_state.dart';
 import 'package:sinflix/core/widgets/movie_card_widget.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
+import 'package:sinflix/main.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({super.key});
@@ -46,6 +45,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final currentLocale = Localizations.localeOf(context);
     final discoverCubit = context.read<DiscoverCubit>();
 
     return Scaffold(
@@ -118,6 +118,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               },
             ),
           ),
+
           BlocBuilder<DiscoverCubit, DiscoverState>(
             builder: (context, state) {
               bool isFavorite = false;
@@ -149,11 +150,23 @@ class _DiscoverPageState extends State<DiscoverPage> {
               );
             },
           ),
-          const Positioned(
+          Positioned(
             left: 0,
             right: 0,
             bottom: 24,
             child: CustomBottomNavigationBar(currentIndex: 0),
+          ),
+          Positioned(
+            top: 60,
+            right: 16,
+            child: FloatingLanguageButton(
+              currentLocale: currentLocale,
+              onLocaleChanged: (locale) {
+                (context.findAncestorStateOfType<MyAppState>())?.setLocale(
+                  locale,
+                );
+              },
+            ),
           ),
         ],
       ),

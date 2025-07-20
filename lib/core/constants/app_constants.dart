@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sinflix/features/offer/models/jeton_package_model.dart';
 
 class AppColors {
   static const Color backgroundColor = Color(0xFF090909);
@@ -69,5 +70,32 @@ class AppConstants {
   static const double profileNameFontSize = 15;
   static const double profileIdFontSize = 12;
 
-static const double movieTitleFontSize = 12;
+  static const double movieTitleFontSize = 12;
+
+  static const jetonPackages = [
+    JetonPackage(
+      discount: "+10%",
+      amount: "330",
+      oldAmount: "200",
+      price: "₺99,99",
+      color1: Color(0xFF6F060B),
+      color2: AppColors.primaryColor,
+    ),
+    JetonPackage(
+      discount: "+70%",
+      amount: "3.375",
+      oldAmount: "2.000",
+      price: "₺799,99",
+      color1: Color(0xFF5949E6),
+      color2: AppColors.primaryColor,
+    ),
+    JetonPackage(
+      discount: "+35%",
+      amount: "1.350",
+      oldAmount: "1.000",
+      price: "₺399,99",
+      color1: Color(0xFF6F060B),
+      color2: AppColors.primaryColor,
+    ),
+  ];
 }
