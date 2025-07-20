@@ -10,7 +10,6 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   ProfileCubit(this.repository, this.storage) : super(ProfileInitial());
 
-  // Token'ı secure storage'dan otomatik çekmek istersen:
   Future<void> fetchProfile() async {
     try {
       emit(ProfileLoading());

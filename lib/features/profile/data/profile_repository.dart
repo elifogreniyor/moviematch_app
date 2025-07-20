@@ -16,11 +16,9 @@ class ProfileRepository {
     return UserModel.fromJson(data['data']);
   }
 
-  // Favori filmleri getir
   Future<List<MovieModel>> fetchFavoriteMovies(String token) async {
     final data = await apiService.getFavoriteMovies(token);
-    // API response: {"movies": [...]}
-    final movies = (data['movies'] as List<dynamic>?)
+    final movies = (data['data'] as List<dynamic>?)
         ?.map((e) => MovieModel.fromJson(e))
         .toList();
     return movies ?? [];

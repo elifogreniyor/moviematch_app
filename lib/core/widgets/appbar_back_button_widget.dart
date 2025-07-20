@@ -15,19 +15,19 @@ class AppBarBackButton extends StatelessWidget {
         width: AppConstants.appBarBackButtonSize,
         height: AppConstants.appBarBackButtonSize,
         decoration: BoxDecoration(
-          color: AppColors.white10, // %10 beyaz
+          color: AppColors.white10,
           shape: BoxShape.circle,
           border: Border.all(
-            color: AppColors.white20, // %20 beyaz
+            color: AppColors.white20,
             width: 1,
           ),
         ),
         child: Center(
           child: SvgPicture.asset(
-            'assets/icons/back.svg', // Ok SVG dosyasını buraya koy!
+            'assets/icons/back.svg',
             width: AppConstants.appBarBackIconSize,
             height: AppConstants.appBarBackIconSize,
-            color: AppColors.white, // İkona istediğin rengi verebilirsin
+            color: AppColors.white, 
           ),
         ),
       ),

@@ -93,6 +93,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get photo_upload_appBar_title => 'Profil Detayı';
 
   @override
+  String get profile_appBar_title => 'Profil Detayı';
+
+  @override
   String get photo_upload_title => 'Fotoğraflarınızı Yükleyin';
 
   @override

@@ -5,7 +5,6 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
-import 'package:sinflix/core/utils/secure_storage_helper.dart';
 import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
@@ -41,9 +40,7 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
       File file = File(picked.path);
       File? compressed = await compressImage(file); // burada çağır!
       setState(() {
-        _selectedImage =
-            compressed ??
-            file; // compress başarılıysa sıkıştırılmışı, yoksa orijinali ata
+        _selectedImage = compressed ?? file;
       });
       final bytes = (_selectedImage?.length() ?? 0);
       debugPrint('[DEBUG] Yüklenecek dosya boyutu: $bytes bytes');
@@ -56,7 +53,6 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) async {
         if (state is ProfilePhotoUploadSuccess) {
-          // Başarı mesajı göster
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(l10n.photo_upload_success)));
@@ -71,6 +67,28 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
       builder: (context, state) {
         final isLoading = state is ProfilePhotoUploading;
         return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leadingWidth: AppConstants.appBarBackButtonSize + 25,
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 25), // Figma ile aynı!
+              child: Align(
+                alignment: Alignment.center,
+                child: AppBarBackButton(onTap: () => context.go('/profile')),
+              ),
+            ),
+            centerTitle: true,
+            title: Text(
+              l10n.photo_upload_appBar_title,
+              style: const TextStyle(
+                color: AppColors.white,
+                fontSize: AppConstants.appBarTitleFontSize,
+                fontWeight: FontWeight.w500,
+                fontFamily: AppConstants.fontFamily,
+              ),
+            ),
+          ),
           backgroundColor: AppColors.backgroundColor,
           body: SafeArea(
             child: LayoutBuilder(
@@ -85,35 +103,6 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppConstants.horizontalPadding,
-                              vertical: 10,
-                            ),
-                            child: Row(
-                              children: [
-                                AppBarBackButton(
-                                  onTap: () => Navigator.of(context).maybePop(),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  l10n.photo_upload_appBar_title,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: AppConstants.appBarTitleFontSize,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: AppConstants.fontFamily,
-                                  ),
-                                ),
-                                const Spacer(),
-                                SizedBox(
-                                  width: AppConstants.appBarBackButtonSize,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 32),
-                          // Title
                           Text(
                             l10n.photo_upload_title,
                             style: const TextStyle(
@@ -181,7 +170,6 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
                                     ),
                             ),
                           ),
-                          // Flexible alan, boşluğu doldurur
                           const Spacer(),
                         ],
                       ),
@@ -204,6 +192,7 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
                 context.read<ProfileCubit>().uploadProfilePhoto(
                   _selectedImage!,
                 );
+                context.go('/profile');
               },
             ),
           ),

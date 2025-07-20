@@ -17,11 +17,11 @@ class AppColors {
   static const textFieldBorderFocused = white50;
 }
 
-
 class AppConstants {
   static const String baseUrl = "https://caseapi.servicelabs.tech";
 
   static const String fontFamily = "EuclidCircularA";
+  static const String fontFamily2 = "Montserrat";
 
   static const double borderRadius = 18;
   static const double borderWidth = 1;
@@ -66,4 +66,8 @@ class AppConstants {
   static const double pageBottomPadding = 28;
 
   static const double movieCardRadius = 28;
+  static const double profileNameFontSize = 15;
+  static const double profileIdFontSize = 12;
+
+static const double movieTitleFontSize = 12;
 }

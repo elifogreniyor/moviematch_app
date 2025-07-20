@@ -263,6 +263,12 @@ abstract class AppLocalizations {
   /// **'Profile Detail'**
   String get photo_upload_appBar_title;
 
+  /// No description provided for @profile_appBar_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Detail'**
+  String get profile_appBar_title;
+
   /// No description provided for @photo_upload_title.
   ///
   /// In en, this message translates to:

@@ -93,6 +93,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get photo_upload_appBar_title => 'Profile Detail';
 
   @override
+  String get profile_appBar_title => 'Profile Detail';
+
+  @override
   String get photo_upload_title => 'Upload Your Photos';
 
   @override

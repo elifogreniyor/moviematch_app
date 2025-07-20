@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
 import 'package:sinflix/core/widgets/custom_bottom_navigation_bar.dart';
 import 'package:sinflix/core/widgets/favorite_button_widget.dart';
+import 'package:sinflix/core/widgets/limited_offer_button_widget.dart';
 import 'package:sinflix/features/discover/presentation/cubit/discover_cubit.dart';
 import 'package:sinflix/features/discover/presentation/cubit/discover_state.dart';
-import 'package:sinflix/features/discover/presentation/view/movie_card_widget.dart';
+import 'package:sinflix/core/widgets/movie_card_widget.dart';
+import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({super.key});
@@ -40,6 +45,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final discoverCubit = context.read<DiscoverCubit>();
 
     return Scaffold(
@@ -94,12 +100,15 @@ class _DiscoverPageState extends State<DiscoverPage> {
                           vertical: 24.0,
                         ),
                         child: MovieCardWidget(
-                          imageUrl: ensureHttps(movie.posterUrl),
-                          title: movie.title,
-                          description: movie.description,
-                          isFavorite: movie.isFavorite,
-                          onFavoriteToggle: () =>
-                              discoverCubit.toggleFavorite(movie.id),
+                          movie: movie,
+                          isExpanded: true,
+                          onFavoriteToggle: () async {
+                            await context.read<DiscoverCubit>().toggleFavorite(
+                              movie.id,
+                            );
+                            if (mounted)
+                              context.read<ProfileCubit>().fetchProfile();
+                          },
                         ),
                       );
                     },
@@ -149,15 +158,5 @@ class _DiscoverPageState extends State<DiscoverPage> {
         ],
       ),
     );
-  }
-
-  String ensureHttps(String? url) {
-    if (url == null || url.isEmpty) {
-      return "https://your-default-image-url.com/placeholder.jpg";
-    }
-    if (url.startsWith('https://')) return url;
-    if (url.startsWith('http://'))
-      return url.replaceFirst('http://', 'https://');
-    return 'https://$url';
   }
 }

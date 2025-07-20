@@ -53,6 +53,10 @@ flutter:
           weight: 600
         - asset: assets/fonts/EuclidCircularA/Euclid Circular A Bold.ttf
           weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+          weight: 600
 
 flutter_native_splash:
   color: "#000000"
