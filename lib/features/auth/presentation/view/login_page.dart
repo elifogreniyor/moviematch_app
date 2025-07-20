@@ -42,7 +42,12 @@ class LoginPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 28),
             child: Column(
               children: [
-                const SizedBox(height: 200),
+                Image.asset(
+                  'assets/images/SinFlixLogo.png',
+                  width: 200,
+                  height: 200,
+                ),
+                //const SizedBox(height: 200),
                 Text(
                   l10n.login_title,
                   style: const TextStyle(
@@ -61,7 +66,6 @@ class LoginPage extends StatelessWidget {
                     fontSize: AppConstants.subtitleFontSize,
                     fontWeight: FontWeight.w400,
                     color: AppColors.white,
-                    height: 1.5,
                   ),
                 ),
                 const SizedBox(height: 40),

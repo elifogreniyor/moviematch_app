@@ -1,14 +1,18 @@
+import 'dart:math';
+import 'dart:ui';
+
+import 'package:sinflix/core/widgets/custom_bottom_navigation_bar.dart';
+import 'package:sinflix/core/widgets/limited_offer_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
-import 'package:sinflix/core/widgets/custom_bottom_navigation_bar.dart';
-import 'package:sinflix/core/widgets/limited_offer_button_widget.dart';
 import 'package:sinflix/core/widgets/movie_card_widget.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:sinflix/features/offer/presentation/widgets/limited_offer_bottom_sheet.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_state.dart';
 import 'package:sinflix/l10n/app_localizations.dart';
@@ -64,10 +68,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    right: 20,
+                  padding: const EdgeInsets.only(right: 20),
+                  child: LimitedOfferButton(
+                    onTap: () => showLimitedOfferSheet(
+                      context,
+                    ), // <-- buraya sheet fonksiyonunu yaz!
                   ),
-                  child: LimitedOfferButton(onTap: () => context.go('/offer')),
                 ),
               ],
             ),
@@ -267,5 +273,46 @@ class _ProfilePageState extends State<ProfilePage> {
   String maskId(String id) {
     if (id.length <= 10) return id;
     return '${id.substring(0, 8)}...${id.substring(id.length - 8)}';
+  }
+
+  void showLimitedOfferSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        double width = MediaQuery.of(context).size.width;
+        double height = MediaQuery.of(context).size.height;
+        return Stack(
+          children: [
+            // Blur overlay
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                child: Container(color: Colors.black.withOpacity(0.22)),
+              ),
+            ),
+            // Sheet content
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: width > 420 ? 402 : width,
+                height: min(height * 0.95, 700),
+                margin: const EdgeInsets.only(bottom: 0),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(38)),
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF2C093A), Color(0xFF18111A)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: const LimitedOfferBottomSheet(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

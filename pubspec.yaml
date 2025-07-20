@@ -39,7 +39,7 @@ flutter:
   generate: true
   assets:
     - assets/icons/
-    - assets/fonts/EuclidCircularA/
+    - assets/fonts/
     - assets/images/
   fonts:
     - family: EuclidCircularA

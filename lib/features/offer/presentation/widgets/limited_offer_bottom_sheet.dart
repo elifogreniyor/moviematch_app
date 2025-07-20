@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
-import 'package:sinflix/features/offer/models/jeton_package_model.dart';
-import 'package:sinflix/features/offer/presentation/widgets/bonus_panel.dart';
+import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/offer/presentation/widgets/jeton_package_card.dart';
 
 class LimitedOfferBottomSheet extends StatelessWidget {
@@ -9,100 +8,182 @@ class LimitedOfferBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bonuses = [
-      {"svg": "assets/icons/premium.svg", "label": "Premium Hesap"},
-      {"svg": "assets/icons/match.svg", "label": "Daha Fazla Eşleşme"},
-      {"svg": "assets/icons/highlight.svg", "label": "Öne Çıkarma"},
-      {"svg": "assets/icons/like.svg", "label": "Daha Fazla Beğeni"},
+    final List bonusList = [
+      {"img": "assets/icons/like.png", "label": "Premium\nHesap"},
+      {"img": "assets/icons/match.png", "label": "Daha\nFazla Eşleşme"},
+      {"img": "assets/icons/up.png", "label": "Öne\nÇıkarma"},
+      {"img": "assets/icons/hearth.png", "label": "Daha\nFazla Beğeni"},
     ];
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF2C093A), Color(0xFF18111A)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+
+    return Column(
+      children: [
+        const SizedBox(height: 24),
+        const Text(
+          "Sınırlı Teklif",
+          style: TextStyle(
+            color: AppColors.white,
+            fontFamily: AppConstants.fontFamily,
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+          ),
         ),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-      ),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
-        child: Column(
+        const SizedBox(height: 4),
+        const Text(
+          "Jeton paketini seçerek bonus\nkazanın ve yeni bölümlerin kilidini açın!",
+          style: TextStyle(
+            color: AppColors.white,
+            fontSize: 12,
+            height: 1.5,
+            fontFamily: AppConstants.fontFamily,
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 12),
+        Center(
+          child: Container(
+            width: 367,
+            height: 174,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.07),
+              borderRadius: BorderRadius.circular(22),
+              border: Border.all(color: Colors.white.withOpacity(0.20)),
+            ),
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                // Başlık
+                Positioned(
+                  top: 22,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      "Alacağınız Bonuslar",
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        fontFamily: AppConstants.fontFamily,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 55,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: bonusList
+                        .map(
+                          (b) => _BonusIconText(
+                            img: b["img"]!,
+                            label: b["label"]!,
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 22),
+        const Text(
+          "Kilidi açmak için bir jeton paketi seçin",
+          style: TextStyle(
+            color: AppColors.white,
+            fontFamily: AppConstants.fontFamily,
+            fontWeight: FontWeight.w500,
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Drag indicator
-            Container(
-              width: 45,
-              height: 5,
-              margin: const EdgeInsets.only(bottom: 12),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.13),
-                borderRadius: BorderRadius.circular(12),
+            Expanded(
+              child: JetonPackageCard(
+                discount: "+10%",
+                oldAmount: "200",
+                amount: "330",
+                label: "Jeton",
+                price: "₺99,99",
+                onTap: () {},
               ),
             ),
-            // Başlık ve açıklama
-            const Text(
-              "Sınırlı Teklif",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 21,
+            const SizedBox(width: 6),
+            Expanded(
+              child: JetonPackageCard(
+                discount: "+70%",
+                oldAmount: "2.000",
+                amount: "3.375",
+                label: "Jeton",
+                price: "₺799,99",
+                isFeatured: true,
+                onTap: () {},
               ),
             ),
-            const SizedBox(height: 7),
-            const Text(
-              "Jeton paketini seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
-              style: TextStyle(color: Colors.white70, fontSize: 13),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 22),
-            // Bonus paneli
-            BonusPanel(bonuses: bonuses),
-            const SizedBox(height: 24),
-            const Align(
-              alignment: Alignment.center,
-              child: Text(
-                "Kilidi açmak için bir jeton paketi seçin",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            // Jeton kartları
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: AppConstants.jetonPackages
-                  .map((p) => JetonPackageCard(p))
-                  .toList(),
-            ),
-            const SizedBox(height: 28),
-            // Alt buton
-            SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD32D4E),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  elevation: 0,
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Tüm Jetonları Gör",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: JetonPackageCard(
+                discount: "+35%",
+                oldAmount: "1.000",
+                amount: "1.350",
+                label: "Jeton",
+                price: "₺399,99",
+                onTap: () {},
               ),
             ),
           ],
         ),
-      ),
+        const SizedBox(height: 18),
+        PrimaryButton(text: 'Tüm Jetonları Gör', onTap: () {}),
+      ],
+    );
+  }
+}
+
+// PNG ile ikonu gösteren widget
+class _BonusIconText extends StatelessWidget {
+  final String img;
+  final String label;
+  const _BonusIconText({required this.img, required this.label});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 55,
+          height: 55,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFF6F060B),
+            border: Border.all(color: Colors.white.withOpacity(0.10), width: 1),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.10), // Hafif beyaz
+                blurRadius: 8,
+                spreadRadius: 0,
+                offset: Offset(0, 0), // Dıştan hafif bir glow gibi dursun
+              ),
+            ],
+          ),
+          child: Center(child: Image.asset(img, width: 33, height: 33)),
+        ),
+        const SizedBox(height: 13),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: AppColors.white,
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            height: 1.5,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -25,7 +25,7 @@ class LimitedOfferButton extends StatelessWidget {
           SvgPicture.asset(
             'assets/icons/diamond.svg',
             width: 18,
-            height: 18, // veya null: kendi rengi
+            height: 18, 
           ),
           const SizedBox(width: 6),
           const Text(

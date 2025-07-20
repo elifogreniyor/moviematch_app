@@ -32,7 +32,7 @@ class AppConstants {
   static const double prefixIconWidth = 18;
   static const double prefixIconHeight = 16;
   static const double prefixIconLeft = 18;
-  static const double prefixIconRight = 12;
+  static const double prefixIconRight = 6;
 
   static const double socialIconButtonSize = 60;
   static const double socialIconGoogle = 20;
