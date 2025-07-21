@@ -39,7 +39,7 @@ lib/
 -cd moviematch_app
 -flutter pub get
 -flutter run
-## Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
+Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
 ```
 
 ## Geliştirici
