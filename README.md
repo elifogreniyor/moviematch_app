@@ -22,6 +22,10 @@ SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidi
 ### Fotoğraf Yükleme
 <img src="screenshots/upload_photo.png" width="260"/>
 
+## Demo Video
+
+[▶️ Uygulama Kısa Tanıtım Videosu (mp4)](https://drive.google.com/file/d/1Ik9UwpvyMk09ATwquCx7O3hipebJJpQi/view?usp=sharing)
+
 ## Proje Özellikleri
 
 - Kullanıcı Girişi & Kayıt (Login/Register)
@@ -63,4 +67,5 @@ Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleS
 ```
 
 ## Geliştirici
-  Elifnur Pamuk(elifnurpamuk1998@gmail.com)
+Elifnur Pamuk
+elifnurpamuk1998@gmail.com
