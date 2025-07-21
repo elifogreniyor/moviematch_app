@@ -33,4 +33,4 @@ flutter run
 ## Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
 
 ## Geliştirici
-  Elif Pamuk(elifnurpamuk1998@gmail.com)
+  Elifnur Pamuk(elifnurpamuk1998@gmail.com)
