@@ -16,3 +16,21 @@ SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidi
 - Clean Architecture, MVVM, Bloc kullanımı
 - Logger ve Firebase Crashlytics/Analytics
 - Responsive ve modern UI (Figma tasarıma yakın)
+
+## Proje Yapısı
+lib/
+├── core/ # Temalar, yardımcılar, servisler, logger, widgets
+├── features/ # auth, discover, offer, profile, splash
+├── l10n/ # Lokalizasyon dosyaları
+├── routes/ # Uygulama rotaları (GoRouter)
+└── main.dart
+
+## Kurulum
+git clone https://github.com/elifogreniyor/moviematch_app.git
+cd moviematch_app
+flutter pub get
+flutter run
+## Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
+
+## Geliştirici
+  Elif Pamuk(elifnurpamuk1998@gmail.com)
