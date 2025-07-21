@@ -33,10 +33,10 @@ lib/
 
 
 ## Kurulum
-git clone https://github.com/elifogreniyor/moviematch_app.git
-cd moviematch_app
-flutter pub get
-flutter run
+-git clone https://github.com/elifogreniyor/moviematch_app.git
+-cd moviematch_app
+-flutter pub get
+-flutter run
 ## Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
 
 ## Geliştirici
