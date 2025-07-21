@@ -1,16 +1,46 @@
-# popcorndate
+# SinFlix - Flutter Case Study
 
-A new Flutter project.
+SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidir. Bu uygulama, film/dizi keşfetme, favorileme, profil ve kimlik doğrulama (login/register) gibi temel özellikleri içerir.
 
-## Getting Started
+## Proje Özellikleri
 
-This project is a starting point for a Flutter application.
+- Kullanıcı Girişi & Kayıt (Login/Register)
+- Güvenli token yönetimi (Secure Storage)
+- Sonsuz scroll (infinite scroll) ile ana sayfa film listesi (5'li)
+- Favori filmler (anlık UI güncellemesi, Profile kaydı)
+- Profil görüntüleme ve fotoğraf yükleme
+- Localization (Türkçe, İngilizce)
+- Splash ekranı & özel animasyonlar
+- Custom Bottom Navigation Bar
+- Sınırlı Teklif Bottom Sheet
+- Clean Architecture, MVVM, Bloc kullanımı
+- Logger ve Firebase Crashlytics/Analytics
+- Responsive ve modern UI (Figma tasarıma yakın)
 
-A few resources to get you started if this is your first Flutter project:
+## Proje Yapısı
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```plaintext
+lib/
+ ├── core/             # Temalar, yardımcılar, servisler, logger, widgets
+ ├── features/
+ │    ├── auth         # Giriş/kayıt ekranı ve işlemleri
+ │    ├── discover     # Keşfet (ana sayfa)
+ │    ├── offer        # Sınırlı teklif bottom sheet
+ │    ├── profile      # Profil ve fotoğraf işlemleri
+ │    └── splash       # Splash ekranı
+ ├── l10n/             # Lokalizasyon dosyaları (TR/EN)
+ ├── routes/           # Uygulama rotaları (GoRouter)
+ └── main.dart         # Uygulama başlangıcı
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Kurulum
+```plaintext
+-git clone https://github.com/elifogreniyor/moviematch_app.git
+-cd moviematch_app
+-flutter pub get
+-flutter run
+Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
+```
+
+## Geliştirici
+  Elifnur Pamuk(elifnurpamuk1998@gmail.com)
