@@ -2,6 +2,26 @@
 
 SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidir. Bu uygulama, film/dizi keşfetme, favorileme, profil ve kimlik doğrulama (login/register) gibi temel özellikleri içerir.
 
+## Uygulama Ekran Görüntüleri
+
+### Splash & Login
+<img src="screenshots/splashpage.png" width="260"/> <img src="screenshots/login.png" width="260"/>
+
+### Register
+<img src="screenshots/register.png" width="260"/>
+
+### Discover (TR/EN)
+<img src="screenshots/discover.png" width="260"/> <img src="screenshots/discover_en.png" width="260"/>
+
+### Offer / Sınırlı Teklif (TR/EN)
+<img src="screenshots/offer.png" width="260"/> <img src="screenshots/offer_en.png" width="260"/>
+
+### Profil & Favoriler
+<img src="screenshots/profil.png" width="260"/> <img src="screenshots/profil_exit.png" width="260"/>
+
+### Fotoğraf Yükleme
+<img src="screenshots/upload_photo.png" width="260"/>
+
 ## Proje Özellikleri
 
 - Kullanıcı Girişi & Kayıt (Login/Register)
