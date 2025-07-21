@@ -18,12 +18,19 @@ SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidi
 - Responsive ve modern UI (Figma tasarıma yakın)
 
 ## Proje Yapısı
+
 lib/
-├── core/ # Temalar, yardımcılar, servisler, logger, widgets
-├── features/ # auth, discover, offer, profile, splash
-├── l10n/ # Lokalizasyon dosyaları
-├── routes/ # Uygulama rotaları (GoRouter)
-└── main.dart
+ ├── core/             # Temalar, yardımcılar, servisler, logger, widgets
+ ├── features/
+ │    ├── auth         # Giriş/kayıt ekranı ve işlemleri
+ │    ├── discover     # Keşfet (ana sayfa)
+ │    ├── offer        # Sınırlı teklif bottom sheet
+ │    ├── profile      # Profil ve fotoğraf işlemleri
+ │    └── splash       # Splash ekranı
+ ├── l10n/             # Lokalizasyon dosyaları (TR/EN)
+ ├── routes/           # Uygulama rotaları (GoRouter)
+ └── main.dart         # Uygulama başlangıcı
+
 
 ## Kurulum
 git clone https://github.com/elifogreniyor/moviematch_app.git
