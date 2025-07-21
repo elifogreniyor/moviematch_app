@@ -1,9 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -12,6 +11,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
       child: Row(
@@ -19,7 +19,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         children: [
           _BottomNavItem(
             iconPath: 'assets/icons/home.svg',
-            label: 'Anasayfa',
+            label: l10n.bottom_nav_home,
             selected: currentIndex == 0,
             onTap: () {
               if (currentIndex != 0) context.go('/discover');
@@ -28,7 +28,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           const SizedBox(width: 16),
           _BottomNavItem(
             iconPath: 'assets/icons/profile.svg',
-            label: 'Profil',
+            label: l10n.bottom_nav_profile,
             selected: currentIndex == 1,
             onTap: () {
               if (currentIndex != 1) context.go('/profile');

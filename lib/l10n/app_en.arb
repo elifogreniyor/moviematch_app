@@ -42,7 +42,25 @@
   "profile_appBar_title": "Profile Detail",
   "photo_upload_title": "Upload Your Photos",
   "photo_upload_subtitle": "Resources out incentivize relaxation floor loss cc.",
-  "photo_upload_button": "Continue"
-
-
+  "photo_upload_button": "Continue",
+  "copy_id_message" : "Copied",
+  "profile_add_photo": "Add Photo",
+  "profile_favorite_movies": "Favorite Movies",
+  "exit_button_text": "Exit",
+  "error_message": "An error occurred.",
+  "bottom_nav_home": "Home",
+  "bottom_nav_profile": "Profile",
+  "expand_text": "More",
+  "collapse_text": "Less",
+  "weeklyPerHead": "Weekly Per Head",
+  "premium_account": "Premium\nAccount",
+  "more_matches": "More\nMatches",
+  "up_more": "Up\nMore",
+  "like_more": "Like\nMore",
+  "limited_offer_title": "Limited Offer",
+  "limited_offer_subTitle": "Select your bonus\npackage and unlock your new\nfeatures!",
+  "get_your_bonus": "Get Your Bonus",
+   "unlock_with_token_package": "Unlock with token package",
+   "see_all_tokens": "See all tokens",
+   "favorite_updated": "Favorite updated"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
 
 class JetonPackageCard extends StatelessWidget {
   final String discount;
@@ -23,11 +24,7 @@ class JetonPackageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Kart renkleri
-    final List<Color> gradientColors = isFeatured
-        ? [Color(0xFF7B57F6), Color(0xFF6A9AFE)]
-        : [Color(0xFFE50914), Color(0xFF6F060B)];
-
+    AppLocalizations l10n = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -43,7 +40,7 @@ class JetonPackageCard extends StatelessWidget {
                 ? [
                     Color(0xFF7B57F6),
                     Color(0xFFE50914),
-                  ] // Orta mor ve açık mor tonları
+                  ] 
                 : [
                     Color(0xFF6F060B),
                     Color(0xFFE50914),
@@ -66,7 +63,6 @@ class JetonPackageCard extends StatelessWidget {
           clipBehavior: Clip.none,
           alignment: Alignment.topCenter,
           children: [
-            // % indirim etiketi
             Positioned(
               top: -13,
               child: Container(
@@ -162,7 +158,7 @@ class JetonPackageCard extends StatelessWidget {
                     ),
                     SizedBox(height: 2),
                     Text(
-                      "Başına haftalık",
+                      l10n.weeklyPerHead,
                       style: TextStyle(
                         color: AppColors.white,
                         fontSize: 12,

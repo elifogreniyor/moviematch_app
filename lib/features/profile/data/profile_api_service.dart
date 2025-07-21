@@ -2,7 +2,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 class ProfileApiService {
   final Dio dio;
@@ -44,11 +43,6 @@ class ProfileApiService {
       }
       return photoUrl;
     } catch (e) {
-      if (e is DioException) {
-        debugPrint('[ERROR] uploadProfilePhoto error: ${e.response?.data}');
-      } else {
-        debugPrint('[ERROR] uploadProfilePhoto error: $e');
-      }
       rethrow;
     }
   }

@@ -33,7 +33,6 @@ class FavoriteButtonWidget extends StatelessWidget {
             transitionBuilder: (child, animation) =>
                 ScaleTransition(scale: animation, child: child),
             child: Icon(
-              //TODO : heart iconunu değiştir
               isFavorite ? Icons.favorite : Icons.favorite_border,
               key: ValueKey(isFavorite),
               color: isFavorite ? Colors.red : Colors.white,

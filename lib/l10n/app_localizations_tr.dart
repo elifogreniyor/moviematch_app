@@ -103,4 +103,64 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get photo_upload_button => 'Devam Et';
+
+  @override
+  String get copy_id_message => 'Kopyalandı';
+
+  @override
+  String get profile_add_photo => 'Fotoğraf Ekle';
+
+  @override
+  String get profile_favorite_movies => 'Beğendiğim Filmler';
+
+  @override
+  String get exit_button_text => 'Çıkış Yap';
+
+  @override
+  String get error_message => 'Bir hata oluştu.';
+
+  @override
+  String get bottom_nav_home => 'Anasayfa';
+
+  @override
+  String get bottom_nav_profile => 'Profil';
+
+  @override
+  String get expand_text => 'Daha Fazlası';
+
+  @override
+  String get collapse_text => 'Daha Az';
+
+  @override
+  String get weeklyPerHead => 'Başına Haftalık';
+
+  @override
+  String get premium_account => 'Premium\nHesap';
+
+  @override
+  String get more_matches => 'Daha\nFazla Eşleşme';
+
+  @override
+  String get up_more => 'Öne\nÇıkarma';
+
+  @override
+  String get like_more => 'Daha\nFazla Beğeni';
+
+  @override
+  String get limited_offer_title => 'Sınırlı Teklif';
+
+  @override
+  String get limited_offer_subTitle => 'Jeton paketini seçerek bonus\nkazanın ve yeni bölümlerin kilidini açın!';
+
+  @override
+  String get get_your_bonus => 'Alacağınız Bonuslar';
+
+  @override
+  String get unlock_with_token_package => 'Kilidi açmak için bir jeton paketi seçin';
+
+  @override
+  String get see_all_tokens => 'Tüm Jetonları Gör';
+
+  @override
+  String get favorite_updated => 'Favori güncellendi';
 }

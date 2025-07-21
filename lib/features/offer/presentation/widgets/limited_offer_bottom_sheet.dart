@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/offer/presentation/widgets/jeton_package_card.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
 
 class LimitedOfferBottomSheet extends StatelessWidget {
   const LimitedOfferBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l10n = AppLocalizations.of(context)!;
     final List bonusList = [
-      {"img": "assets/icons/like.png", "label": "Premium\nHesap"},
-      {"img": "assets/icons/match.png", "label": "Daha\nFazla Eşleşme"},
-      {"img": "assets/icons/up.png", "label": "Öne\nÇıkarma"},
-      {"img": "assets/icons/hearth.png", "label": "Daha\nFazla Beğeni"},
+      {"img": "assets/icons/like.png", "label": l10n.premium_account},
+      {"img": "assets/icons/match.png", "label": l10n.more_matches},
+      {"img": "assets/icons/up.png", "label": l10n.up_more},
+      {"img": "assets/icons/hearth.png", "label": l10n.like_more},
     ];
 
     return Column(
       children: [
         const SizedBox(height: 24),
-        const Text(
-          "Sınırlı Teklif",
+        Text(
+          l10n.limited_offer_title,
           style: TextStyle(
             color: AppColors.white,
             fontFamily: AppConstants.fontFamily,
@@ -28,8 +30,8 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        const Text(
-          "Jeton paketini seçerek bonus\nkazanın ve yeni bölümlerin kilidini açın!",
+        Text(
+          l10n.limited_offer_subTitle,
           style: TextStyle(
             color: AppColors.white,
             fontSize: 12,
@@ -59,7 +61,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                   right: 0,
                   child: Center(
                     child: Text(
-                      "Alacağınız Bonuslar",
+                      l10n.get_your_bonus,
                       style: TextStyle(
                         color: AppColors.white,
                         fontWeight: FontWeight.w500,
@@ -90,8 +92,8 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 22),
-        const Text(
-          "Kilidi açmak için bir jeton paketi seçin",
+        Text(
+          l10n.unlock_with_token_package,
           style: TextStyle(
             color: AppColors.white,
             fontFamily: AppConstants.fontFamily,
@@ -139,7 +141,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 18),
-        PrimaryButton(text: 'Tüm Jetonları Gör', onTap: () {}),
+        PrimaryButton(text: l10n.see_all_tokens, onTap: () {}),
       ],
     );
   }
@@ -166,7 +168,7 @@ class _BonusIconText extends StatelessWidget {
                 color: Colors.white.withOpacity(0.10), // Hafif beyaz
                 blurRadius: 8,
                 spreadRadius: 0,
-                offset: Offset(0, 0), // Dıştan hafif bir glow gibi dursun
+                offset: Offset(0, 0),
               ),
             ],
           ),

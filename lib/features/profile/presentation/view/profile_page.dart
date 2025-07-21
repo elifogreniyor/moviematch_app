@@ -50,10 +50,10 @@ class _ProfilePageState extends State<ProfilePage> {
               elevation: 0,
               leadingWidth: AppConstants.appBarBackButtonSize + 25,
               leading: Padding(
-                padding: const EdgeInsets.only(left: 25), // Figma'dakiyle aynı
+                padding: const EdgeInsets.only(left: 25),
                 child: Align(
                   alignment: Alignment.center,
-                  child: AppBarBackButton(onTap: () => context.pop()),
+                  child: AppBarBackButton(onTap: () => context.go('/discover')),
                 ),
               ),
               centerTitle: true,
@@ -70,9 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: LimitedOfferButton(
-                    onTap: () => showLimitedOfferSheet(
-                      context,
-                    ), // <-- buraya sheet fonksiyonunu yaz!
+                    onTap: () => showLimitedOfferSheet(context),
                   ),
                 ),
               ],
@@ -153,8 +151,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ScaffoldMessenger.of(
                                             context,
                                           ).showSnackBar(
-                                            const SnackBar(
-                                              content: Text('Kopyalandı'),
+                                            SnackBar(
+                                              content: Text(
+                                                l10n.copy_id_message,
+                                              ),
                                             ),
                                           );
                                         },
@@ -190,8 +190,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               minimumSize: const Size(121, 36),
                               elevation: 0,
                             ),
-                            child: const Text(
-                              "Fotoğraf Ekle",
+                            child: Text(
+                              l10n.profile_add_photo,
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontFamily: AppConstants.fontFamily,
@@ -203,8 +203,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 30),
-                      const Text(
-                        "Beğendiğim Filmler",
+                      Text(
+                        l10n.profile_favorite_movies,
                         style: TextStyle(
                           fontFamily: AppConstants.fontFamily,
                           color: AppColors.white,
@@ -233,11 +233,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                          top: 32.0,
-                        ), // Yukarıdan boşluk
+                        padding: const EdgeInsets.only(top: 32.0),
                         child: PrimaryButton(
-                          text: "Çıkış Yap",
+                          text: l10n.exit_button_text,
                           onTap: () {
                             context.read<AuthCubit>().logout();
                             context.go('/login');
@@ -251,12 +249,12 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           );
         } else if (state is ProfileError) {
-          return const Scaffold(
+          return Scaffold(
             backgroundColor: AppColors.backgroundColor,
             body: Center(
               child: Text(
-                "Bir hata oluştu.",
-                style: TextStyle(color: Colors.white),
+                l10n.error_message,
+                style: const TextStyle(color: Colors.white),
               ),
             ),
           );
@@ -302,7 +300,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(38)),
                   gradient: LinearGradient(
-                    colors: [Color(0xFF2C093A), Color(0xFF18111A)],
+                    colors: [AppColors.gradientTop, AppColors.gradientBottom],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),

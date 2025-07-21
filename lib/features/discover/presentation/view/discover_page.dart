@@ -81,7 +81,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   return PageView.builder(
                     controller: _pageController,
                     scrollDirection: Axis.vertical,
-                    itemCount: movies.length,
+                    itemCount: null,
                     onPageChanged: (index) {
                       if (index == movies.length - 1 &&
                           hasMore &&
@@ -93,7 +93,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       });
                     },
                     itemBuilder: (context, index) {
-                      final movie = movies[index];
+                      final movie = movies[index % movies.length];
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12.0,
@@ -106,8 +106,18 @@ class _DiscoverPageState extends State<DiscoverPage> {
                             await context.read<DiscoverCubit>().toggleFavorite(
                               movie.id,
                             );
-                            if (mounted)
-                              context.read<ProfileCubit>().fetchProfile();
+                            if (!mounted) return;
+                            final closed = ScaffoldMessenger.of(context)
+                                .showSnackBar(
+                                  SnackBar(
+                                    content: Text(l10n.favorite_updated),
+                                  ),
+                                )
+                                .closed;
+                            context.read<ProfileCubit>().fetchProfile();
+                            closed.then((_) {
+                              if (!mounted) return;
+                            });
                           },
                         ),
                       );

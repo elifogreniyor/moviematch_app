@@ -103,4 +103,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get photo_upload_button => 'Continue';
+
+  @override
+  String get copy_id_message => 'Copied';
+
+  @override
+  String get profile_add_photo => 'Add Photo';
+
+  @override
+  String get profile_favorite_movies => 'Favorite Movies';
+
+  @override
+  String get exit_button_text => 'Exit';
+
+  @override
+  String get error_message => 'An error occurred.';
+
+  @override
+  String get bottom_nav_home => 'Home';
+
+  @override
+  String get bottom_nav_profile => 'Profile';
+
+  @override
+  String get expand_text => 'More';
+
+  @override
+  String get collapse_text => 'Less';
+
+  @override
+  String get weeklyPerHead => 'Weekly Per Head';
+
+  @override
+  String get premium_account => 'Premium\nAccount';
+
+  @override
+  String get more_matches => 'More\nMatches';
+
+  @override
+  String get up_more => 'Up\nMore';
+
+  @override
+  String get like_more => 'Like\nMore';
+
+  @override
+  String get limited_offer_title => 'Limited Offer';
+
+  @override
+  String get limited_offer_subTitle => 'Select your bonus\npackage and unlock your new\nfeatures!';
+
+  @override
+  String get get_your_bonus => 'Get Your Bonus';
+
+  @override
+  String get unlock_with_token_package => 'Unlock with token package';
+
+  @override
+  String get see_all_tokens => 'See all tokens';
+
+  @override
+  String get favorite_updated => 'Favorite updated';
 }

@@ -45,7 +45,8 @@ class FloatingLanguageButton extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () => onLocaleChanged(const Locale('en')),
+                  onPressed: () => onLocaleChanged(
+                    const Locale('en')),
                 ),
               ],
             ),

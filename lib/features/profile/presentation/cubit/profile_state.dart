@@ -30,11 +30,10 @@ class ProfileError extends ProfileState {
   List<Object?> get props => [message];
 }
 
-// Fotoğraf yükleme için ek state'ler:
 class ProfilePhotoUploading extends ProfileState {}
 
 class ProfilePhotoUploadSuccess extends ProfileState {
-  final String photoUrl; // Yüklenen yeni fotoğraf url'si
+  final String photoUrl;
   ProfilePhotoUploadSuccess(this.photoUrl);
 
   @override

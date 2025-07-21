@@ -40,7 +40,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       }
       final photoUrl = await repository.uploadProfilePhoto(file, token);
       emit(ProfilePhotoUploadSuccess(photoUrl));
-      await fetchProfile(); // Foto sonrası profil güncelle
+      await fetchProfile(); // 
     } catch (e) {
       emit(ProfilePhotoUploadFailure(e.toString()));
     }

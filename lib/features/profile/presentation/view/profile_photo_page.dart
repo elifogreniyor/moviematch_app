@@ -5,9 +5,8 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
-import 'package:sinflix/core/widgets/analytics_test_widget.dart';
+import 'package:sinflix/core/services/logger_service.dart';
 import 'package:sinflix/core/widgets/appbar_back_button_widget.dart';
-import 'package:sinflix/core/widgets/crashlytics_test_widget.dart';
 import 'package:sinflix/core/widgets/primary_button_widget.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:sinflix/features/profile/presentation/cubit/profile_state.dart';
@@ -44,8 +43,6 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
       setState(() {
         _selectedImage = compressed ?? file;
       });
-      final bytes = (_selectedImage?.length() ?? 0);
-      debugPrint('[DEBUG] Yüklenecek dosya boyutu: $bytes bytes');
     }
   }
 
@@ -55,15 +52,22 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) async {
         if (state is ProfilePhotoUploadSuccess) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(l10n.photo_upload_success)));
-          await Future.delayed(const Duration(seconds: 1));
-          context.go('/discover'); // veya context.go('/discover')
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(l10n.photo_upload_success)))
+              .closed
+              .then((_) {
+                if (context.mounted) {
+                  context.go('/discover');
+                }
+              });
+          LoggerService().info("Profil fotoğrafı başarıyla yüklendi.");
+          LoggerService().logEvent('l10n.profile_photo_upload_success');
         } else if (state is ProfilePhotoUploadFailure) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(l10n.photo_upload_failed)));
+          LoggerService().error("Profil fotoğrafı yüklenemedi");
+          LoggerService().logEvent('profile_photo_upload_failed');
         }
       },
       builder: (context, state) {
@@ -74,7 +78,7 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
             elevation: 0,
             leadingWidth: AppConstants.appBarBackButtonSize + 25,
             leading: Padding(
-              padding: const EdgeInsets.only(left: 25), // Figma ile aynı!
+              padding: const EdgeInsets.only(left: 25),
               child: Align(
                 alignment: Alignment.center,
                 child: AppBarBackButton(onTap: () => context.go('/profile')),
@@ -96,86 +100,84 @@ class _ProfilePhotoPageState extends State<ProfilePhotoPage> {
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: 410, minWidth: 400),
-                    child: IntrinsicHeight(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            l10n.photo_upload_title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: AppConstants.titleFontSize,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: AppConstants.fontFamily,
-                            ),
-                            textAlign: TextAlign.center,
+                  physics: BouncingScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 36,
+                      left: 28,
+                      right: 28,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          l10n.photo_upload_title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: AppConstants.titleFontSize,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: AppConstants.fontFamily,
                           ),
-                          const SizedBox(height: 8),
-                          // Subtitle
-                          Align(
-                            alignment: Alignment.center,
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 220),
-                              child: Text(
-                                l10n.photo_upload_subtitle,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontFamily: AppConstants.fontFamily,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: AppConstants.subtitleFontSize,
-                                  color: AppColors.white,
-                                  height: 1.2,
-                                ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        // Subtitle
+                        Align(
+                          alignment: Alignment.center,
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 220),
+                            child: Text(
+                              l10n.photo_upload_subtitle,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontFamily: AppConstants.fontFamily,
+                                fontWeight: FontWeight.w400,
+                                fontSize: AppConstants.subtitleFontSize,
+                                color: AppColors.white,
+                                height: 1.2,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 48),
-                          // Photo Box
-                          GestureDetector(
-                            onTap: isLoading ? null : _pickImage,
-                            child: Container(
-                              width: AppConstants.photoBoxSize,
-                              height: AppConstants.photoBoxSize,
-                              decoration: BoxDecoration(
-                                color: AppColors.white10,
-                                borderRadius: BorderRadius.circular(
-                                  AppConstants.photoBoxBorderRadius,
-                                ),
-                                border: Border.all(
-                                  color: _selectedImage == null
-                                      ? AppColors.white10
-                                      : AppColors.primaryColor.withOpacity(0.5),
-                                  width: AppConstants.photoBoxBorderWidth,
-                                ),
+                        ),
+                        const SizedBox(height: 48),
+                        // Photo Box
+                        GestureDetector(
+                          onTap: isLoading ? null : _pickImage,
+                          child: Container(
+                            width: AppConstants.photoBoxSize,
+                            height: AppConstants.photoBoxSize,
+                            decoration: BoxDecoration(
+                              color: AppColors.white10,
+                              borderRadius: BorderRadius.circular(
+                                AppConstants.photoBoxBorderRadius,
                               ),
-                              child: _selectedImage == null
-                                  ? Center(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white54,
-                                        size: AppConstants.photoBoxIconSize,
-                                      ),
-                                    )
-                                  : ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        AppConstants.photoBoxBorderRadius - 4,
-                                      ),
-                                      child: Image.file(
-                                        _selectedImage!,
-                                        fit: BoxFit.cover,
-                                      ),
+                              border: Border.all(
+                                color: _selectedImage == null
+                                    ? AppColors.white10
+                                    : AppColors.primaryColor.withOpacity(0.5),
+                                width: AppConstants.photoBoxBorderWidth,
+                              ),
+                            ),
+                            child: _selectedImage == null
+                                ? Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white54,
+                                      size: AppConstants.photoBoxIconSize,
                                     ),
-                            ),
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                      AppConstants.photoBoxBorderRadius - 4,
+                                    ),
+                                    child: Image.file(
+                                      _selectedImage!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                           ),
-                          CrashTestButton(),
-                          const SizedBox(height: 16),
-                          AnalyticsTestButton(),
-                          const Spacer(),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 );

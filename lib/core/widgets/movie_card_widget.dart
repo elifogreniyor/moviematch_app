@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sinflix/core/constants/app_constants.dart';
 import 'package:sinflix/features/discover/domain/movie_model.dart';
+import 'package:sinflix/l10n/app_localizations.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final MovieModel movie;
@@ -18,6 +19,7 @@ class MovieCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l10n = AppLocalizations.of(context)!;
     if (isExpanded) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(AppConstants.movieCardRadius),
@@ -74,8 +76,8 @@ class MovieCardWidget extends StatelessWidget {
                           const SizedBox(height: 3),
                           ExpandableText(
                             movie.description,
-                            expandText: 'Daha Fazlası',
-                            collapseText: 'Daha Az',
+                            expandText: l10n.expand_text,
+                            collapseText: l10n.collapse_text,
                             maxLines: 2,
                             linkColor: AppColors.white,
                             style: TextStyle(

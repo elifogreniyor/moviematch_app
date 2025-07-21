@@ -286,6 +286,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get photo_upload_button;
+
+  /// No description provided for @copy_id_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get copy_id_message;
+
+  /// No description provided for @profile_add_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Photo'**
+  String get profile_add_photo;
+
+  /// No description provided for @profile_favorite_movies.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite Movies'**
+  String get profile_favorite_movies;
+
+  /// No description provided for @exit_button_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get exit_button_text;
+
+  /// No description provided for @error_message.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred.'**
+  String get error_message;
+
+  /// No description provided for @bottom_nav_home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get bottom_nav_home;
+
+  /// No description provided for @bottom_nav_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get bottom_nav_profile;
+
+  /// No description provided for @expand_text.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get expand_text;
+
+  /// No description provided for @collapse_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Less'**
+  String get collapse_text;
+
+  /// No description provided for @weeklyPerHead.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Per Head'**
+  String get weeklyPerHead;
+
+  /// No description provided for @premium_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium\nAccount'**
+  String get premium_account;
+
+  /// No description provided for @more_matches.
+  ///
+  /// In en, this message translates to:
+  /// **'More\nMatches'**
+  String get more_matches;
+
+  /// No description provided for @up_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Up\nMore'**
+  String get up_more;
+
+  /// No description provided for @like_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Like\nMore'**
+  String get like_more;
+
+  /// No description provided for @limited_offer_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Limited Offer'**
+  String get limited_offer_title;
+
+  /// No description provided for @limited_offer_subTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your bonus\npackage and unlock your new\nfeatures!'**
+  String get limited_offer_subTitle;
+
+  /// No description provided for @get_your_bonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Your Bonus'**
+  String get get_your_bonus;
+
+  /// No description provided for @unlock_with_token_package.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock with token package'**
+  String get unlock_with_token_package;
+
+  /// No description provided for @see_all_tokens.
+  ///
+  /// In en, this message translates to:
+  /// **'See all tokens'**
+  String get see_all_tokens;
+
+  /// No description provided for @favorite_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite updated'**
+  String get favorite_updated;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
