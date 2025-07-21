@@ -24,7 +24,10 @@ SinFlix, Nodelabs Software için hazırlanmış bir Flutter case study projesidi
 
 ## Demo Video
 
-[▶️ Uygulama Kısa Tanıtım Videosu (mp4)](https://drive.google.com/file/d/1Ik9UwpvyMk09ATwquCx7O3hipebJJpQi/view?usp=sharing)
+- [▶️ Uygulama Kısa Tanıtım Videosu (mp4)](https://drive.google.com/file/d/1pDPA9ce6x9CM0v7g6sph_QgnixSXDQYE/view?usp=sharing)
+
+- [Projeyi ZIP olarak indir (Google Drive)](https://drive.google.com/file/d/13fmr-TMThFD1dHJdEBB8b-ZrLM1Zc-4X/view?usp=sharing)
+
 
 ## Proje Özellikleri
 
@@ -58,13 +61,15 @@ lib/
 ```
 
 ## Kurulum
+
 ```plaintext
 -git clone https://github.com/elifogreniyor/moviematch_app.git
 -cd moviematch_app
 -flutter pub get
 -flutter run
-Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
 ```
+
+Not: Firebase servislerini kullanmak için kendi google-services.json ve GoogleService-Info.plist dosyalarınızı eklemelisiniz.
 
 ## Geliştirici
 Elifnur Pamuk
